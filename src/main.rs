@@ -4,10 +4,9 @@
 #[macro_use] extern crate rocket_contrib;
 extern crate base62;
 
-use rocket::Response;
 use rocket::http::Status;
 use rocket::request::Form;
-use rocket::response::{content, status, Redirect, Responder};
+use rocket::response::{content, status, Redirect};
 use rocket_contrib::databases::redis;
 use rocket_contrib::databases::redis::Commands;
 
@@ -45,11 +44,11 @@ fn shorten(conn: RedisConn, form: Form<Url>) -> String {
 }
 
 #[get("/<slug>")]
-fn redirect(conn: RedisConn, slug: String) -> Responder {
+fn redirect(conn: RedisConn, slug: String) -> Result<Redirect, status::Custom<String>> {
     match conn.hget::<_, _, Option<String>>(&slug, "url") {
-        Ok(None) => status::NotFound("no such slug"),
-        Ok(Some(url)) => Redirect::to(url),
-        Err(e) => status::Custom(Status::InternalServerError, format!("error: {}", e)),
+        Ok(None) => Err(status::Custom(Status::NotFound, "no such slug".to_string())),
+        Ok(Some(url)) => Ok(Redirect::to(url)),
+        Err(e) => Err(status::Custom(Status::InternalServerError, format!("error: {}", e))),
     }
 }
 
