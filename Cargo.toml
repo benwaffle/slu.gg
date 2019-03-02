@@ -1,0 +1,13 @@
+[package]
+name = "slugg"
+version = "0.0.1"
+authors = ["Ben Iofel <ben@iofel.me>"]
+
+[dependencies]
+rocket = "0.4.0"
+base62 = "0.3.0"
+
+[dependencies.rocket_contrib]
+version = "0.4.0"
+default-features = false
+features = ["redis_pool"]
