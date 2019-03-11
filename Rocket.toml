@@ -1,2 +1,5 @@
-[global.databases]
+[development.databases]
 redis = { url = "redis://127.0.0.1" }
+
+[production.databases]
+redis = { url = "redis://redis" }

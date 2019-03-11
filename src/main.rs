@@ -23,7 +23,7 @@ fn index() -> content::Html<&'static str> {
     content::Html("
         <!doctype html>
         <form method=post>
-            <input name=url />
+            <input name=url type=url />
             <button>Shorten</button>
         </form>
     ")

@@ -1,0 +1,10 @@
+/target
+**/*.rs.bk
+/Dockerfile
+/docker-compose.yml
+/.dockerignore
+/redis.conf
+/.git
+/.gitignore
+/data
+/.git
