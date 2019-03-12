@@ -6,9 +6,10 @@ extern crate base62;
 
 use rocket::http::Status;
 use rocket::request::Form;
-use rocket::response::{content, status, Redirect};
+use rocket::response::{status, Redirect};
 use rocket_contrib::databases::redis;
 use rocket_contrib::databases::redis::Commands;
+use rocket_contrib::serve::StaticFiles;
 
 #[database("redis")]
 struct RedisConn(redis::Connection);
@@ -16,17 +17,6 @@ struct RedisConn(redis::Connection);
 #[derive(FromForm)]
 struct Url {
     url: String,
-}
-
-#[get("/")]
-fn index() -> content::Html<&'static str> {
-    content::Html("
-        <!doctype html>
-        <form method=post>
-            <input name=url type=url />
-            <button>Shorten</button>
-        </form>
-    ")
 }
 
 #[post("/", data = "<form>")]
@@ -55,6 +45,7 @@ fn redirect(conn: RedisConn, slug: String) -> Result<Redirect, status::Custom<St
 fn main() {
     rocket::ignite()
         .attach(RedisConn::fairing())
-        .mount("/", routes![index, shorten, redirect])
+        .mount("/", StaticFiles::from("static"))
+        .mount("/", routes![shorten, redirect])
         .launch();
 }

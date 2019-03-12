@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>slu.gg</title>
+    <style>
+      :root {
+        --bg: #434c5e;
+        --white: #e5e9f0;
+        --theme: #5e81ac;
+        --dark: #3b4252;
+      }
+
+      * {
+        padding: 0;
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--white);
+      }
+
+      h1 {
+        font-size: 4rem;
+        line-height: 4rem;
+      }
+
+      form {
+        display: inline;
+        margin: 0 auto;
+        display: flex;
+        max-width: 600px;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+      }
+
+      input {
+        width: 100%;
+        max-width: 400px;
+        box-sizing: border-box;
+        margin-top: 1rem;
+        outline: none;
+        border: none;
+        padding: 0.4rem;
+        font-size: 2rem;
+        border-radius: 6px;
+        color: var(--dark);
+        background-color: var(--white);
+        border: 3px solid var(--white);
+        transition: border-color 100ms;
+      }
+
+      input:focus {
+        border-color: var(--theme);
+      }
+
+      button {
+        margin-top: 1rem;
+        font-size: 1.4rem;
+        font-weight: 200;
+        padding: 0.5rem 1.5rem;
+        border-radius: 40px;
+        background-color: var(--theme);
+        color: var(--white);
+        border: none;
+        transition: filter 100ms;
+        outline: none;
+        font-family: monospace;
+      }
+
+      button:hover,
+      button:focus {
+        filter: brightness(120%);
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <form method="post">
+      <h1>🐌</h1>
+      <input
+        name="url"
+        type="url"
+        placeholder="https://tiny.coffee"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        required
+      />
+      <button>slu.gg it</button>
+    </form>
+  </body>
+</html>
