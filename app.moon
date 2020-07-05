@@ -8,7 +8,7 @@ math.randomseed(ngx.now())
 connect_redis = ->
   red = with redis\new()
     \set_timeouts 1000, 1000, 1000
-  ok, err = red\connect config.redis_addr!, 6379
+  ok, err = red\connect config.redis_addr, 6379
   if err
     nil, err
   else
