@@ -49,6 +49,5 @@ luac.out
 
 *.lua # using moonscript
 nginx.conf.compiled
-
-# nginx
-logs/
+logs/ # nginx
+redis-data/

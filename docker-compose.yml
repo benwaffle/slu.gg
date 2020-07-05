@@ -1,0 +1,27 @@
+version: "3"
+services:
+  slugg:
+    build: .
+    networks:
+      - redis
+      - server_webgateway
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.slugg.rule: "Host(`slu.gg`)"
+      traefik.docker.network: "server_webgateway"
+    restart: unless-stopped
+
+  redis:
+    image: redis:alpine
+    networks:
+      - redis
+    volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf:ro
+      - ./redis-data:/data
+    restart: unless-stopped
+
+networks:
+  redis:
+    driver: bridge
+  server_webgateway:
+    external: true
