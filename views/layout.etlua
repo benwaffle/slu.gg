@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= page_title or "slu.gg" %></title>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Playfair+Display+SC:400,700,900');
+
+      :root {
+        --bg: var(--white);
+        /* --white: #e5e9f0; */
+        --white: white;
+        --black: black;
+        --theme: #5e81ac;
+        --dark: #3b4252;
+        --invalid: #c00;
+      }
+
+      * {
+        padding: 0;
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+      }
+
+      html, body {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      body {
+        background-color: var(--black);
+        color: var(--white);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      form {
+        display: inline;
+        margin: 0 auto;
+        display: flex;
+        max-width: 600px;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+      }
+
+      input {
+        box-sizing: border-box;
+        outline: none;
+        border: none;
+        padding: .7rem 1rem;
+        font-size: 5rem;
+        color: var(--dark);
+        background-color: var(--white);
+        border: 10px solid var(--white);
+        transition: border-color 100ms;
+      }
+
+      input:invalid {
+        border-color: var(--invalid);
+      }
+
+      button {
+        font-family: 'Playfair Display SC', sans-serif;
+        margin-top: 2rem;
+        font-size: 3rem;
+        font-weight: 200;
+        padding: 0.5rem 1.5rem;
+        padding-bottom: 0.35em;
+        background-color: var(--black);
+        color: var(--white);
+        border: 10px solid var(--white);
+        outline: none;
+        transform: translateY(1000px);
+        transition: transform .3s;
+      }
+
+      button:hover {
+        cursor: pointer;
+        background-color: var(--white);
+        color: var(--black);
+      }
+
+      input:valid + button {
+        transform: translateY(0px);
+      }
+    </style>
+  </head>
+  <body>
+    <% content_for("inner") %>
+  </body>
+</html>
