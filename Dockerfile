@@ -15,5 +15,5 @@ COPY . .
 RUN moonc .
 RUN lapis build production
 
-EXPOSE 8080
+EXPOSE 80
 CMD lapis server production
