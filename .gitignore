@@ -47,7 +47,9 @@ luac.out
 
 # End of https://www.toptal.com/developers/gitignore/api/lua
 
-*.lua # using moonscript
-nginx.conf.compiled
-logs/ # nginx
-redis-data/
+# using moonscript
+*.lua
+/nginx.conf.compiled
+# nginx
+/logs/
+/redis-data/
