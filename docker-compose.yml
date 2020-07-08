@@ -9,6 +9,7 @@ services:
       traefik.enable: "true"
       traefik.http.routers.slugg.rule: "Host(`slu.gg`)"
       traefik.docker.network: "server_webgateway"
+      com.centurylinklabs.watchtower.enable: "false"
     restart: unless-stopped
 
   redis:
