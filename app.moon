@@ -63,14 +63,17 @@ class extends lapis.Application
     if err
       return err
 
-    res, err = red\hget("url:#{@params.id}", 'url')
+    url, err = red\hget("url:#{@params.id}", 'url')
+    if err
+      return err
+    update, err = red\hincrby("url:#{@params.id}", 'clicks', 1)
     if err
       return err
 
-    if res == ngx.null
+    if url == ngx.null
       return "#{@params.id} not found"
 
-    if res\find('^https?://') == nil
-      res = "http://#{res}"
+    if url\find('^https?://') == nil
+      url = "http://#{url}"
 
-    redirect_to: res
+    redirect_to: url
