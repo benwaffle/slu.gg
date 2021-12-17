@@ -77,3 +77,21 @@ class extends lapis.Application
       url = "http://#{url}"
 
     redirect_to: url
+
+  [list: '/list']: =>
+    red, err = connect_redis!
+    if err
+      return err
+
+    urls, err = red\keys("url:*")
+    if err
+      return err
+
+    @html ->
+      ul ->
+        for url in *urls
+          dest, err = red\hget(url, 'url')
+          if err
+            li "#{url} => #{err}"
+          else
+            li "#{url} => #{dest}"
