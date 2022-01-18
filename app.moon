@@ -88,7 +88,7 @@ class extends lapis.Application
       return err
 
     @html ->
-      ul style: "width: 100vw; height: 100vh; overflow: scroll;" ->
+      ul style: "width: 100vw; height: 100vh; overflow: scroll;", ->
         for url in *urls
           dest, err = red\hget(url, 'url')
           if err
