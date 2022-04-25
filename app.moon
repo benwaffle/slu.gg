@@ -66,12 +66,13 @@ class extends lapis.Application
     url, err = red\hget("url:#{@params.id}", 'url')
     if err
       return err
-    update, err = red\hincrby("url:#{@params.id}", 'clicks', 1)
-    if err
-      return err
 
     if url == ngx.null
       return "#{@params.id} not found"
+
+    update, err = red\hincrby("url:#{@params.id}", 'clicks', 1)
+    if err
+      return err
 
     if url\find('^https?://') == nil
       url = "http://#{url}"
