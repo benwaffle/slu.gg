@@ -8,11 +8,8 @@
       @import url('https://fonts.googleapis.com/css?family=Playfair+Display+SC:400,700,900');
 
       :root {
-        --bg: var(--white);
-        /* --white: #e5e9f0; */
-        --white: white;
+        --white: #e5e9f0;
         --black: black;
-        --theme: #5e81ac;
         --dark: #3b4252;
         --invalid: #c00;
       }
@@ -31,8 +28,8 @@
       }
 
       body {
-        background-color: var(--black);
-        color: var(--white);
+        background-color: var(--white);
+        color: var(--black);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -43,40 +40,40 @@
         margin: 0 auto;
         display: flex;
         max-width: 600px;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        padding: 1rem;
       }
 
       input {
         box-sizing: border-box;
         outline: none;
         border: none;
-        padding: .7rem 1rem;
-        font-size: 5rem;
+        padding: 0.5rem 1rem;
+        font-size: 1.5rem;
         color: var(--dark);
         background-color: var(--white);
-        border: 10px solid var(--white);
+        border: 5px solid var(--black);
         transition: border-color 100ms;
+        width: 500px;
       }
 
       input:invalid {
         border-color: var(--invalid);
+        border-style: dashed;
       }
 
       button {
-        font-family: 'Playfair Display SC', sans-serif;
-        margin-top: 2rem;
-        font-size: 3rem;
+        font-family: domaine;
+        font-size: 39px;
         font-weight: 200;
-        padding: 0.5rem 1.5rem;
-        padding-bottom: 0.35em;
-        background-color: var(--black);
-        color: var(--white);
-        border: 10px solid var(--white);
+        padding-bottom: 0.15em;
+        color: var(--black);
         outline: none;
-        transform: translateY(1000px);
+        transform: translateX(1000px);
         transition: transform .3s;
+        height: 84px;
+        width: 65px;
+        border: none;
       }
 
       button:hover {
@@ -86,7 +83,7 @@
       }
 
       input:valid + button {
-        transform: translateY(0px);
+        transform: translateX(0px);
       }
     </style>
   </head>

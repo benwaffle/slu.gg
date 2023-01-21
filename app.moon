@@ -21,8 +21,8 @@ class extends lapis.Application
   '/': =>
     @html ->
       form method: 'post', action: @url_for('shorten'), ->
-        input name: 'url', placeholder: 'cool.website/thing', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false', required: true, autofocus: true
-        button tabindex: '-1', 'slugg it'
+        input name: 'url', type: 'url', placeholder: 'https://cool.website/long', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false', required: true, autofocus: true
+        button tabindex: '-1', '→'
 
   [shorten: '/shorten']: respond_to {
     POST: =>
