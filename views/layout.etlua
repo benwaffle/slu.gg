@@ -74,6 +74,7 @@
         height: 84px;
         width: 65px;
         border: none;
+        background: none;
       }
 
       button:hover {
