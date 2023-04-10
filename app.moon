@@ -10,9 +10,12 @@ connect_redis = ->
     \set_timeouts 1000, 1000, 1000
   ok, err = red\connect config.redis_addr, 6379
   if err
-    nil, err
-  else
-    red, nil
+    return nil, err
+
+  res, err = red\auth(os.getenv "REDIS_USERNAME", os.getenv "REDIS_PASSWORD")
+  if err
+    return nil, err
+  return red, nil
 
 class extends lapis.Application
   @enable 'etlua'
