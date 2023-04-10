@@ -8,4 +8,4 @@ config "production", ->
   port 80
   num_workers 4
   code_cache "on"
-  redis_addr "redis"
+  redis_addr os.getenv "REDIS_URL"
